@@ -1,0 +1,1 @@
+export const PLAYER_LOCAL_STORAGE_NAME = 'player';
