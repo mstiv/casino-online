@@ -1,18 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { Grid } from 'semantic-ui-react';
 
+import LoginForm from '../components/LoginForm';
+import './Login.scss'
 
-class Login extends Component {
-  render() {
-    return (
-      <div>
-        <header>
-          <p>
-            Login Page
-          </p>
-        </header>
-      </div>
-    );
-  }
-}
+import {
+	loginInWithCreds
+} from './utils';
 
-export default Login;
+const LoginPage = ({ dispatch }) => (
+	<Grid className="login-container" centered>
+		<Grid.Row columns={12}>
+		  <Grid.Column
+		    width={6}
+		  >
+		    <LoginForm 
+		    	dispatch={dispatch}
+		    	loginInWithCreds={loginInWithCreds}
+		    />
+		  </Grid.Column>
+		</Grid.Row>
+	</Grid>
+);
+
+export default withRouter(connect()(LoginPage)) ;

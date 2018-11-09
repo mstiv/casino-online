@@ -7,7 +7,6 @@ import {
 	Switch
 } from 'react-router';
 
-
 import Login from './containers/Login';
 import GamesList from './containers/GamesList';
 
@@ -17,6 +16,7 @@ import {
 } from './lib/authHelpers';
 
 import Urls from './constants/urls.js';
+
 
 const Routes = () => (
 	<Router>
@@ -34,7 +34,7 @@ const Routes = () => (
 			<Route
 				exact
 				path={Urls.GAMES_PAGE}
-				component={userIsNotAuthenticated(GamesList)}
+				component={userIsAuthenticated(GamesList)}
 			/>
 		</Switch>
 	</Router>

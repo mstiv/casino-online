@@ -1,0 +1,27 @@
+body{
+	font-family: 'Roboto';
+}
+img{
+	max-width: 100%;
+}
+*{
+	box-sizing: border-box;
+}
+.text-center {
+  text-align: center;
+}
+.flex-center{
+  justify-content: center;
+}
+.flex{
+  display: flex;
+}
+.pull-right {
+  float: right;
+}
+
+.clear-fix {
+  clear: both;
+  display: block;
+  overflow: hidden;
+}

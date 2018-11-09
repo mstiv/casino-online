@@ -1,9 +1,9 @@
-export const LOGIN_REQUEST = 'LOGIN_REQUEST';
-export const LOGIN_RESPONSE = 'LOGIN_RESPONSE';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
-export const loginUser = (type,data) => (
+export const authenticatePlayer = (response) => (
 	{
-		type,
-		data
+		type: LOGIN_SUCCESS,
+		data: response.data,
+		status: response.status
 	}
 );

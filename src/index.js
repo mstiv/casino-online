@@ -1,9 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
+
 import Routes from './routes';
+
 import configureStore from './store';
-import './index.css';
+
+import 'semantic-ui-css/semantic.min.css';
+import './styles/common.scss';
 
 import {
 	getPlayerFromLocalStorage
@@ -11,13 +15,14 @@ import {
 
 const initializeReduxStore = () => {
 	const initialState = {
-		user: getPlayerFromLocalStorage()
+		player: getPlayerFromLocalStorage()
 	};
 
 	return configureStore(initialState);
 }
 
 const store = initializeReduxStore();
+
 
 const App = () => (
 	<Provider store={store}>

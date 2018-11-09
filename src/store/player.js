@@ -1,11 +1,11 @@
-import { LOGIN_REQUEST, LOGIN_RESPONSE } from '../actions';
+import { LOGIN_SUCCESS } from '../actions';
 
 
 const player = ( state = {}, action ) => {
 	switch(action.type){
-		case LOGIN_RESPONSE:
+		case LOGIN_SUCCESS:
 			return {
-				player: action.player
+				player: action.data.player
 			}
 		default : 
 			return state
