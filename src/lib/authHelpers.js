@@ -2,9 +2,9 @@ import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect';
 
 import {
 	PLAYER_LOCAL_STORAGE_NAME
-} from 'constants/index';
+} from '../constants/index';
 
-import Urls from 'constants/urls';
+import Urls from '../constants/urls';
 
 export const userIsAuthenticated = connectedRouterRedirect({
 	redirectPath: Urls.LOGIN_PAGE,
@@ -18,6 +18,11 @@ export const userIsNotAuthenticated = connectedRouterRedirect({
 	wrapperDisplayName: 'UserIsNotAuthenticated'
 });
 
-export function getUserFromLocalStorage(): string {
-  return localStorage.getItem(PLAYER_LOCAL_STORAGE_NAME) || '';
+export function getPlayerFromLocalStorage() {
+  const player = localStorage.getItem(PLAYER_LOCAL_STORAGE_NAME) || '';
+  return JSON.parse(player);
+}
+
+export function savePlayerInLocalStorage(player = '') {
+  return localStorage.setItem(PLAYER_LOCAL_STORAGE_NAME, JSON.stringify(player)) ;
 }

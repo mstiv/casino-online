@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 
-class Login extends Component {
+class GamesList extends Component {
   render() {
     return (
       <div>
         <header>
           <p>
-            Login Page
+            GamesList Page
           </p>
         </header>
       </div>
@@ -15,4 +15,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default GamesList;
