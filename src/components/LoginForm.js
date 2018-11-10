@@ -27,9 +27,9 @@ class LoginForm extends React.Component {
 		const { username, password } = this.state;
 		if( username.trim() && password) {
 			this.setState({ isLoggingIn: true, errorText: '' });
-			const isLoggedIn = await dispatch(loginInWithCreds(username, password));
-			if(!isLoggedIn) {
-				this.setState({ isLoggingIn: false, errorText: 'Invalid Username/Password' });
+			const loggedInResponse = await dispatch(loginInWithCreds(username, password));
+			if(loggedInResponse.error) {
+				this.setState({ isLoggingIn: false, errorText: loggedInResponse.error });
 			}
 		}
 

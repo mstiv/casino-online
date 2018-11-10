@@ -13,7 +13,13 @@ export const loginInWithCreds = ( username, password) => async (dispatch) => {
 		const { data } = res;
 		savePlayerInLocalStorage(data.player);
 		dispatch(authenticatePlayer(res));
-		return true;
+		return {
+			status: res.data.status
+		}
+	}else {
+		return {
+			status: res.data ? res.data.status : "fail",
+			error: res.data ? res.data.error : "Invalid Username/Password"
+		}
 	}
-	return false;
 }
