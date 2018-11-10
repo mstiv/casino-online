@@ -1,15 +1,16 @@
-import axios from 'axios';
+import { post } from '../lib/http.js';
+import { savePlayerInLocalStorage } from '../lib/authHelpers.js';
 import {
 	authenticatePlayer
 } from '../actions'
 import ApiUrls from '../constants/ApiUrls';
-import { savePlayerInLocalStorage } from '../lib/authHelpers.js'
+
 
 export const loginInWithCreds = ( username, password) => async (dispatch) => {
-	const res = await axios.post(ApiUrls.LOGIN, {username, password});
-	const {status, data} = res;
-	debugger;
-	if(status === 200 && data.status === "success"){
+	const res = await post(ApiUrls.LOGIN, {username, password});
+	console.log(res);
+	if(res.status === 200 && res.data && res.data.status === "success"){
+		const { data } = res;
 		savePlayerInLocalStorage(data.player);
 		dispatch(authenticatePlayer(res));
 		return true;

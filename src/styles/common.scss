@@ -1,3 +1,5 @@
+@import 'variables.scss';
+
 body{
 	font-family: 'Roboto';
 }
@@ -24,4 +26,18 @@ img{
   clear: both;
   display: block;
   overflow: hidden;
+}
+.error{
+  color: $errorRed;
+}
+
+.img-container{
+  position: relative;
+  img{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
 }

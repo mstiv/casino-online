@@ -38,7 +38,7 @@ class LoginForm extends React.Component {
 	render() {
 		return (
 			<div>
-		        <div className="logo">
+		        <div className="logo img-container">
 		          <img src="/images/logo.svg" alt="logo" />
 		        </div>
 		        <Form 
@@ -68,7 +68,6 @@ class LoginForm extends React.Component {
 		            icon="lock"
 		            required
 		          />
-		          <p className="error">{this.state.errorText}</p>
 		          <Button
 		            className="login-button"
 		            primary
@@ -77,6 +76,7 @@ class LoginForm extends React.Component {
 		            Login
 		            <Icon name="angle right" />
 		          </Button>
+		          <p className="error">{this.state.errorText}</p>
 		          <Loader active={this.state.isLoggingIn} />
 		        </Form>
 		    </div>	

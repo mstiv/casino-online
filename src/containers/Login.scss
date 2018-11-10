@@ -1,16 +1,10 @@
+@import "../styles/variables";
+
 .login-container{
-	background-color: #444;
+	background-color: $dashboardBackground;
 	min-height: 100vh;
 
 	.logo{
-		position: relative;
 		padding-bottom: 18.666%;
-		img{
-			position: absolute;
-			top: 0;
-			right: 0;
-			left: 0;
-			bottom: 0;
-		}
 	}
 }
