@@ -1,8 +1,4 @@
 @import 'variables.scss';
-
-body{
-	font-family: 'Roboto';
-}
 img{
 	max-width: 100%;
 }
@@ -21,7 +17,6 @@ img{
 .pull-right {
   float: right;
 }
-
 .clear-fix {
   clear: both;
   display: block;
@@ -30,6 +25,11 @@ img{
 .error{
   color: $errorRed;
 }
+.page-container{
+  background-color: $dashboardBackground;
+  min-height: 100vh;
+}
+/* better performance by preventing reflows when image loads - allocate a specified space based on aspect ratio for the image before it loads */
 
 .img-container{
   position: relative;

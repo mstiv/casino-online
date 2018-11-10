@@ -1,7 +1,8 @@
-import { post } from '../lib/http.js';
+import { post, get } from '../lib/http.js';
 import { savePlayerInLocalStorage } from '../lib/authHelpers.js';
 import {
-	authenticatePlayer
+	authenticatePlayer,
+	loadGames,
 } from '../actions'
 import ApiUrls from '../constants/ApiUrls';
 
@@ -22,4 +23,11 @@ export const loginInWithCreds = ( username, password) => async (dispatch) => {
 			error: res.data ? res.data.error : "Invalid Username/Password"
 		}
 	}
+}
+
+
+export const getAllGames = () => async (dispatch) => {	
+	const res = await get(ApiUrls.GAMES_LIST);
+	dispatch(loadGames(res));
+	return res;
 }

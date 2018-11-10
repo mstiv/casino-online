@@ -1,0 +1,30 @@
+@import '../styles/variables.scss';
+
+.ui.grid.content{
+	padding: 40px;
+	background: $dashboardBackgroundWhite;
+}
+
+
+
+.content{
+	.user{
+		.img-container{
+			height: 50px;
+			width: 50px;
+
+			img{
+				border-radius: 50%;
+			}
+		}
+		.info{
+			margin-left: 20px;
+			h2{
+				margin-bottom: 0;
+			}
+		}
+	}
+	.ui.button.logout{
+		margin-top: 20px;
+	}
+}

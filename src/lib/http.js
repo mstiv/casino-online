@@ -24,9 +24,15 @@ export const post = async (url = '', data = {}) => {
 	return await makeRequest(url, {
 		method: 'POST',
 		headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
 	});
+}
+
+export const get = async (url = '', data = {}) => {
+  return await makeRequest(url, {
+    method: 'GET',
+  });
 }

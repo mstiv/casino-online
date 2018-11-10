@@ -38,9 +38,6 @@ class LoginForm extends React.Component {
 	render() {
 		return (
 			<div>
-		        <div className="logo img-container">
-		          <img src="/images/logo.svg" alt="logo" />
-		        </div>
 		        <Form 
 		        	className="login-form"
 			        onSubmit={(e) => {
@@ -55,7 +52,6 @@ class LoginForm extends React.Component {
 		            required
 		            icon="user"
 		            onChange={(e, { value }) => { this.setState({ username: value }); }}
-		            required
 		          />
 
 		          <Form.Field
@@ -69,7 +65,6 @@ class LoginForm extends React.Component {
 		            required
 		          />
 		          <Button
-		            className="login-button"
 		            primary
 		            disabled={this.state.isLoggingIn}
 		          >

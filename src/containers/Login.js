@@ -4,6 +4,7 @@ import { withRouter } from 'react-router';
 import { Grid } from 'semantic-ui-react';
 
 import LoginForm from '../components/LoginForm';
+import Logo from '../components/Logo';
 import './Login.scss'
 
 import {
@@ -11,11 +12,12 @@ import {
 } from './utils';
 
 const LoginPage = ({ dispatch }) => (
-	<Grid className="login-container" centered>
+	<Grid className="page-container login-container" centered>
 		<Grid.Row columns={12}>
 		  <Grid.Column
 		    width={6}
 		  >
+		  	<Logo />
 		    <LoginForm 
 		    	dispatch={dispatch}
 		    	loginInWithCreds={loginInWithCreds}
