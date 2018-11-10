@@ -36,6 +36,7 @@ class LoginForm extends React.Component {
 	}
 
 	render() {
+		const { isLoggingIn, errorText } = this.state;
 		return (
 			<div>
 		        <Form 
@@ -60,19 +61,19 @@ class LoginForm extends React.Component {
 		            placeholder="Password"
 		            label="Password"
 		            type="password"
-		            disabled={this.state.isLoggingIn}
+		            disabled={isLoggingIn}
 		            icon="lock"
 		            required
 		          />
 		          <Button
 		            primary
-		            disabled={this.state.isLoggingIn}
+		            disabled={isLoggingIn}
 		          >
 		            Login
 		            <Icon name="angle right" />
 		          </Button>
-		          <p className="error">{this.state.errorText}</p>
-		          <Loader active={this.state.isLoggingIn} />
+		          <p className="error">{errorText}</p>
+		          <Loader active={isLoggingIn} />
 		        </Form>
 		    </div>	
 		);	

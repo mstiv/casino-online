@@ -4,10 +4,12 @@ import { withRouter } from 'react-router';
 import { 
   Grid,
   Button,
-  Icon
+  Icon,
+  Loader
 } from 'semantic-ui-react';
 import Logo from '../components/Logo';
 import PlayerInfo from '../components/PlayerInfo';
+import Game from '../components/Game';
 
 import './GamesList.scss'
 
@@ -19,15 +21,19 @@ class GamesList extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      games: props.games
+      games: props.games,
+      isLoading: false
     };
   }
   getGames = async () => {
     const { dispatch } = this.props;
-    const games = await dispatch(getAllGames());
-    console.log(games);
     this.setState({
-      games
+      isLoading: true
+    });
+    const games = await dispatch(getAllGames());
+    this.setState({
+      games,
+      isLoading: false
     });
   }
   componentDidMount() {
@@ -38,6 +44,7 @@ class GamesList extends React.Component {
   }
   render() {
     const { player } = this.props;
+    const { games, isLoading } = this.props;
     return (
       <Grid className="page-container" centered>
           <Grid.Column width={12}>
@@ -66,7 +73,22 @@ class GamesList extends React.Component {
                 <Grid.Column width={3}>
                 </Grid.Column>
               </Grid.Row>
+
+              <Grid.Row>
+                <Grid.Column width={12}>
+                  <div className="games-list">
+                    <h2>Games </h2>
+                    <Loader active={isLoading} />
+                    {
+                      games.map(game => (
+                        <Game {...game} />
+                      ))
+                    }
+                  </div>
+                </Grid.Column>
+              </Grid.Row>
             </Grid>
+
 
           </Grid.Column>
       </Grid>
