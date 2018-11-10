@@ -1,25 +1,27 @@
 import React from 'react';
 import {
-	Grid,
-	Button
+	Button,
+	Icon
 } from 'semantic-ui-react';
 
 const Game = (game) => (
-    <Grid>
-      <Grid.Row>
-        <Grid.Column width={4}>
+    <li>
+        <div className="flex">
           <div className="img-container">
           	<img src={game.icon} alt="game" />
           </div>
-        </Grid.Column> 
-        <Grid.Column width={12}>
           <div className="game-info">
           	<h4>{game.name}</h4>
           	<p>{game.description}</p>
+			<Button
+				secondary
+			>
+				Play
+				<Icon name="angle right" />
+			</Button>
           </div>
-        </Grid.Column> 
-      </Grid.Row>
-    </Grid>
+        </div>
+    </li>
 );
 
 export default Game;

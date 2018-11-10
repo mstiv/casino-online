@@ -3,6 +3,7 @@ import { savePlayerInLocalStorage } from '../lib/authHelpers.js';
 import {
 	authenticatePlayer,
 	loadGames,
+	loadCategories
 } from '../actions'
 import ApiUrls from '../constants/ApiUrls';
 
@@ -28,5 +29,10 @@ export const loginInWithCreds = ( username, password) => async (dispatch) => {
 export const getAllGames = () => async (dispatch) => {	
 	const res = await get(ApiUrls.GAMES_LIST);
 	dispatch(loadGames(res));
-	return res;
+	return res.data;
+}
+export const getAllCategories = () => async (dispatch) => {	
+	const res = await get(ApiUrls.CATEGORIES_LIST);
+	dispatch(loadCategories(res));
+	return res.data;
 }

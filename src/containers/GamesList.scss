@@ -5,16 +5,15 @@
 	background: $dashboardBackgroundWhite;
 }
 
-
-
 .content{
 	.user{
 		.img-container{
-			height: 50px;
 			width: 50px;
-
 			img{
 				border-radius: 50%;
+			}
+			&:after{
+				padding-bottom: 100%;
 			}
 		}
 		.info{
@@ -26,5 +25,35 @@
 	}
 	.ui.button.logout{
 		margin-top: 20px;
+	}
+	h2.title {
+	    border-bottom: 2px solid #eee;
+	    padding-bottom: 10px;
+	    margin-bottom: 20px;
+	}
+
+	.games-list{
+		.img-container{
+			width: 140px;
+			margin-right: 20px;
+			&:after{
+				padding-bottom: 100%;
+			}
+		}
+		.game-info{
+			position: relative;
+			width: calc(100% - ( 140px + 20px));
+			h4{
+				margin-bottom: 10px;
+			}
+			button{
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+		}
+		li{
+			margin-bottom: 20px;
+		}
 	}
 }
