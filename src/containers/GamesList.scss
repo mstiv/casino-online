@@ -1,10 +1,12 @@
 @import '../styles/variables.scss';
 
+.ui.grid.page-container{
+	padding-bottom: 40px;
+}
 .ui.grid.content{
 	padding: 40px;
 	background: $dashboardBackgroundWhite;
 }
-
 .content{
 	.user{
 		.img-container{
@@ -54,6 +56,13 @@
 		}
 		li{
 			margin-bottom: 20px;
+		}
+	}
+	.categories{
+		li{
+			line-height: 2;
+			font-size: 16px;
+			font-weight: 700;
 		}
 	}
 }
