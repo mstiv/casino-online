@@ -12,13 +12,19 @@ json-server --watch mock/mock-data.json --port 3001 --middlewares mock/mock-api.
 ```
 
 ### Install UI dependencies
-`npm install`
+```javascript
+npm install
 or
-`yarn install`
+yarn install
+```
 
 ### Usage
-`npm start`
+```javascript
+npm start
+```
 
 ### For production build
-`npm run build`
+```javascript
+npm run build
+```
 
