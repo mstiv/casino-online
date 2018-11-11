@@ -1,39 +1,4 @@
-@import '../styles/variables.scss';
-
-.ui.grid.page-container{
-	padding-bottom: 40px;
-}
-.ui.grid.content{
-	padding: 40px;
-	background: $dashboardBackgroundWhite;
-}
 .content{
-	.user{
-		.img-container{
-			width: 50px;
-			img{
-				border-radius: 50%;
-			}
-			&:after{
-				padding-bottom: 100%;
-			}
-		}
-		.info{
-			margin-left: 20px;
-			h2{
-				margin-bottom: 0;
-			}
-		}
-	}
-	.ui.button.logout, .ui.button.back-button{
-		margin-top: 20px;
-	}
-	h2.title {
-	    border-bottom: 2px solid #eee;
-	    padding-bottom: 10px;
-	    margin-bottom: 20px;
-	}
-
 	.games-list{
 		.img-container{
 			width: 140px;
