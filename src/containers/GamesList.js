@@ -6,7 +6,8 @@ import {
   Button,
   Icon,
   Loader,
-  Search
+  Input,
+  Checkbox
 } from 'semantic-ui-react';
 import Logo from '../components/Logo';
 import PlayerInfo from '../components/PlayerInfo';
@@ -20,6 +21,25 @@ import {
   logoutUser
 } from './utils';
 
+/*Filter Util functions*/
+const hasCommonElements = (arr1 = [], arr2 = []) => {
+    return arr2.filter(item => arr1.includes(item)).length > 0
+}
+
+const filterByCategories = (games = [], selectedCategories= []) => {
+  if(selectedCategories.length <=0){
+    return games;
+  }
+  return games.filter(game => hasCommonElements(game.categoryIds, selectedCategories));
+}
+
+const filterBySearch = (games = [], searchQuery = '') => {
+  if(searchQuery.trim().length <=0){
+    return games;
+  }
+  return games.filter(game => game.name.indexOf(searchQuery) === 0);
+}
+
 class GamesList extends React.Component {
   constructor(props){
     super(props);
@@ -31,7 +51,9 @@ class GamesList extends React.Component {
         categories: false,
         search: false,
         logout: false,
-      }
+      },
+      searchQuery: '',
+      selectedCategories: []
     };
   }
   getGames = async () => {
@@ -88,7 +110,9 @@ class GamesList extends React.Component {
   }
   render() {
     const { player } = this.props;
-    const { games, categories, isLoading } = this.state;
+    const { games, categories, isLoading, searchQuery, selectedCategories } = this.state;
+    let filteredGames = filterByCategories(games, selectedCategories);
+    filteredGames = filterBySearch(filteredGames, searchQuery);
     return (
       <Grid className="page-container" centered>
         <Grid.Row>
@@ -120,8 +144,15 @@ class GamesList extends React.Component {
                   </Button>
                 </Grid.Column>
                 <Grid.Column width={4}>
-                  <Search
+                  <Input
+                    placeholder="Search Games"
                     loading={isLoading.search}
+                    icon="search"
+                    onChange={(e, { value }) => {
+                      this.setState({
+                        searchQuery: value
+                      });
+                    }}
                    />
                 </Grid.Column>
               </Grid.Row>
@@ -131,7 +162,7 @@ class GamesList extends React.Component {
                     <ul className="games-list">
                       <Loader active={isLoading.games} />
                       {
-                        games.map((game) => 
+                        filteredGames.map((game) => 
                           <Game 
                             key={game.code} 
                             {...game} 
@@ -147,7 +178,22 @@ class GamesList extends React.Component {
                       {
                         categories.map((category) =>
                           <li key={category.id}>
-                            {category.name}
+                            <Checkbox
+                              value={category.id}
+                              label={category.name}
+                              onChange={(e, { checked }) => {
+                                const newSelectedCategories = [...selectedCategories];
+                                if(checked){
+                                  newSelectedCategories.push(category.id);
+                                }else{
+                                  const idx = newSelectedCategories.indexOf(category.id);
+                                  newSelectedCategories.splice(idx,1);
+                                }
+                                this.setState({
+                                  selectedCategories: newSelectedCategories
+                                });
+                              }}
+                            />
                           </li>
                         )
                       }
