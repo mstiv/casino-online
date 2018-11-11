@@ -16,7 +16,16 @@ import comeon from '../lib/comeon-game';
 
 import Urls from '../constants/urls';
 
+import {
+  logoutUser
+} from './utils';
+
 class GamesList extends React.Component {
+
+  handleLogout = () => {
+    const { player, dispatch } = this.props;
+    dispatch(logoutUser(player.username));
+  }
 
   componentDidMount() {
     const { match } = this.props;
