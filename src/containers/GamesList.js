@@ -16,7 +16,8 @@ import './GamesList.scss'
 
 import {
   getAllGames,
-  getAllCategories
+  getAllCategories,
+  logoutUser
 } from './utils';
 
 class GamesList extends React.Component {
@@ -29,7 +30,8 @@ class GamesList extends React.Component {
       isLoading: {
         games: false,
         categories: false,
-        search: false
+        search: false,
+        logout: false,
       }
     };
   }
@@ -71,6 +73,11 @@ class GamesList extends React.Component {
     });
   }
 
+  handleLogout = () => {
+    const { player, dispatch } = this.props;
+    dispatch(logoutUser(player.username));
+  }
+
   componentDidMount() {
     const { games, categories } = this.state;
     if(!games.length) {
@@ -106,6 +113,9 @@ class GamesList extends React.Component {
                   <Button
                     className="logout"
                     secondary
+                    onClick={(e) => {
+                      this.handleLogout();
+                    }}
                   >
                     <Icon name="angle left" />
                     Logout

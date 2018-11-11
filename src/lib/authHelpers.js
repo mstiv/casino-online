@@ -32,3 +32,7 @@ export function getPlayerFromLocalStorage() {
 export function savePlayerInLocalStorage(player = {}) {
   return localStorage.setItem(PLAYER_LOCAL_STORAGE_NAME, JSON.stringify(player)) ;
 }
+
+export function removePlayerFromLocalStorage() {
+  return localStorage.removeItem(PLAYER_LOCAL_STORAGE_NAME);
+}

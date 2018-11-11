@@ -1,7 +1,11 @@
 import { post, get } from '../lib/http.js';
-import { savePlayerInLocalStorage } from '../lib/authHelpers.js';
+import { 
+	savePlayerInLocalStorage,
+	removePlayerFromLocalStorage
+} from '../lib/authHelpers.js';
 import {
 	authenticatePlayer,
+	logoutPlayer,
 	loadGames,
 	loadCategories
 } from '../actions'
@@ -12,6 +16,7 @@ export const loginInWithCreds = ( username, password) => async (dispatch) => {
 	const res = await post(ApiUrls.LOGIN, {username, password});
 	if(res.status === 200 && res.data && res.data.status === "success"){
 		const { data } = res;
+		data.player.username = username;
 		savePlayerInLocalStorage(data.player);
 		dispatch(authenticatePlayer(res));
 		return {
@@ -21,6 +26,18 @@ export const loginInWithCreds = ( username, password) => async (dispatch) => {
 		return {
 			status: res.data ? res.data.status : "fail",
 			error: res.data ? res.data.error : "Invalid Username/Password"
+		}
+	}
+}
+
+export const logoutUser = ( username ) => async (dispatch) => {
+	const res = await post(ApiUrls.LOGOUT, {username});
+	if(res.status === 200 && res.data && res.data.status === "success"){
+		const { data } = res;
+		removePlayerFromLocalStorage();
+		dispatch(logoutPlayer(res));
+		return {
+			status: res.data.status
 		}
 	}
 }
