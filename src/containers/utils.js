@@ -33,7 +33,6 @@ export const loginInWithCreds = ( username, password) => async (dispatch) => {
 export const logoutUser = ( username ) => async (dispatch) => {
 	const res = await post(ApiUrls.LOGOUT, {username});
 	if(res.status === 200 && res.data && res.data.status === "success"){
-		const { data } = res;
 		removePlayerFromLocalStorage();
 		dispatch(logoutPlayer(res));
 		return {

@@ -1,7 +1,7 @@
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const GAMES_SUCCESS = 'GAMES_SUCCESS';
-export const CATEGORIES_SUCCESS = 'GAMES_SUCCESS';
+export const CATEGORIES_SUCCESS = 'CATEGORIES_SUCCESS';
 
 export const authenticatePlayer = (response) => (
 	{

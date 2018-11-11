@@ -23,7 +23,6 @@ import {
 class GamesList extends React.Component {
   constructor(props){
     super(props);
-    console.log(props.games)
     this.state = {
       games: props.games,
       categories: props.categories,
@@ -90,7 +89,6 @@ class GamesList extends React.Component {
   render() {
     const { player } = this.props;
     const { games, categories, isLoading } = this.state;
-    console.log(games, isLoading);
     return (
       <Grid className="page-container" centered>
         <Grid.Row>
@@ -133,9 +131,12 @@ class GamesList extends React.Component {
                     <ul className="games-list">
                       <Loader active={isLoading.games} />
                       {
-                        games.map(game => (
-                          <Game key={game.code} {...game} />
-                        ))
+                        games.map((game) => 
+                          <Game 
+                            key={game.code} 
+                            {...game} 
+                          />
+                        )
                       }
                     </ul>
                 </Grid.Column>
@@ -144,11 +145,11 @@ class GamesList extends React.Component {
                     <ul className="categories">
                       <Loader active={isLoading.categories} />
                       {
-                        categories.map(category => (
+                        categories.map((category) =>
                           <li key={category.id}>
                             {category.name}
                           </li>
-                        ))
+                        )
                       }
                     </ul>
                 </Grid.Column>

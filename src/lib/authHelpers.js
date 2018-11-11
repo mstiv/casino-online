@@ -12,14 +12,14 @@ const locationHelper = locationHelperBuilder({});
 
 export const userIsAuthenticated = connectedRouterRedirect({
 	redirectPath: Urls.LOGIN_PAGE,
-	authenticatedSelector: state => !!state.player,
+	authenticatedSelector: state => !!(state.player && state.player.name),
 	wrapperDisplayName: 'UserIsAuthenticated',
 	allowRedirectBack: false,
 });
 
 export const userIsNotAuthenticated = connectedRouterRedirect({
 	redirectPath: (state, ownProps) => locationHelper.getRedirectQueryParam(ownProps) || Urls.GAMES_PAGE,
-	authenticatedSelector: state => !state.player,
+	authenticatedSelector: state => !(state.player && state.player.name),
 	wrapperDisplayName: 'UserIsNotAuthenticated',
 	allowRedirectBack: false,
 });

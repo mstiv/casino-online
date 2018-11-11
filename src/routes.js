@@ -9,6 +9,7 @@ import {
 
 import Login from './containers/Login';
 import GamesList from './containers/GamesList';
+import GameDetail from './containers/GameDetail';
 
 import {
 	userIsAuthenticated,
@@ -35,6 +36,11 @@ const Routes = () => (
 				exact
 				path={Urls.GAMES_PAGE}
 				component={userIsAuthenticated(GamesList)}
+			/>
+			<Route
+				exact
+				path={Urls.GAME_DETAIL(':game')}
+				component={userIsAuthenticated(GameDetail)}
 			/>
 		</Switch>
 	</Router>

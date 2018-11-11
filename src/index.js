@@ -15,7 +15,7 @@ import {
 
 const initializeReduxStore = () => {
 	const initialState = {
-		player: getPlayerFromLocalStorage()
+		player: getPlayerFromLocalStorage() || {}
 	};
 
 	return configureStore(initialState);

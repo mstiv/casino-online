@@ -3,7 +3,7 @@ import React from 'react';
 const PlayerInfo = (player) => (
     <div className="flex">
           <div className="img-container">
-            <img src={player.avatar} alt="user-profile" />
+            <img src={`/${player.avatar}`} alt="user-profile" />
           </div>
           <div className="info">
             <h2>{player.name}</h2>
