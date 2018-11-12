@@ -33,9 +33,12 @@ class GamesList extends React.Component {
     comeon.game.launch(params.game);
   }
   render() {
-    const { player, games, match } = this.props;
+    const { player, games, match, history } = this.props;
     const { params } = match;
     const selectedGame = games.find(game => game.code === params.game);
+    if(!selectedGame){
+      history.push(Urls.NOT_FOUND);
+    }
     return (
       <div className="page-container">
         <Grid centered>

@@ -10,6 +10,7 @@ import {
 import Login from './containers/Login';
 import GamesList from './containers/GamesList';
 import GameDetail from './containers/GameDetail';
+import RouteNotFound from './containers/RouteNotFound';
 
 import {
 	userIsAuthenticated,
@@ -41,6 +42,10 @@ const Routes = () => (
 				exact
 				path={Urls.GAME_DETAIL(':game')}
 				component={userIsAuthenticated(GameDetail)}
+			/>
+			<Route
+			  	path="*"
+			  	component={RouteNotFound}
 			/>
 		</Switch>
 	</Router>
