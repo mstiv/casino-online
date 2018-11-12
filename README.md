@@ -2,13 +2,10 @@
 This is a sample online casino built using React, Redux, React Router v4 and Semantic UI Components.
 
 
-### Setup mock server
+### Install server dependencies
+Install json-server needed to run the mock server
 ```javascript
 npm install -g json-server
-```
-
-```javascript
-json-server --watch mock/mock-data.json --port 3001 --middlewares mock/mock-api.js
 ```
 
 ### Install UI dependencies
@@ -19,6 +16,7 @@ yarn install
 ```
 
 ### Usage
+This command runs both the server and app
 ```javascript
 npm start
 ```
