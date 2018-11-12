@@ -13,9 +13,10 @@ import {
 
 const LoginPage = ({ dispatch }) => (
 	<Grid className="page-container login-container" centered>
-		<Grid.Row columns={12}>
+		<Grid.Row computer={12} mobile={16}>
 		  <Grid.Column
-		    width={6}
+		    computer={6}
+		    mobile={12}
 		  >
 		  	<Logo />
 		    <LoginForm 
