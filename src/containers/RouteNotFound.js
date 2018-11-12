@@ -13,7 +13,7 @@ const RouteNotFoundContainer = () => (
 				<Grid.Column width={12}>
 				  <Grid centered>
 				    <Grid.Row>
-				      <Grid.Column width={8}>
+				      <Grid.Column computer={8} mobile={16}>
 				        <Logo/>
 				      </Grid.Column> 
 				    </Grid.Row>
@@ -21,10 +21,10 @@ const RouteNotFoundContainer = () => (
 				</Grid.Column>
 			</Grid.Row>
 			<Grid.Row>
-	            <Grid.Column width={8}>
+	            <Grid.Column width={12}>
 	              	<Grid className="content" centered>
 		                <Grid.Row>
-			                <Grid.Column width={12}>
+			                <Grid.Column computer={12} mobile={16}>
 							  	<h2 className="text-center">
 							    	<Icon name="exclamation" />
 							    	Oops, this page does not exist!
