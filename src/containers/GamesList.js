@@ -7,8 +7,7 @@ import {
   Icon,
   Loader,
   Input,
-  Checkbox,
-  Dimmer
+  Radio
 } from 'semantic-ui-react';
 import Logo from '../components/Logo';
 import PlayerInfo from '../components/PlayerInfo';
@@ -27,11 +26,11 @@ const hasCommonElements = (arr1 = [], arr2 = []) => {
     return arr2.filter(item => arr1.includes(item)).length > 0
 }
 
-const filterByCategories = (games = [], selectedCategories= []) => {
-  if(selectedCategories.length <=0){
+const filterByCategories = (games = [], selectedCategory= null) => {
+  if(!selectedCategory){
     return games;
   }
-  return games.filter(game => hasCommonElements(game.categoryIds, selectedCategories));
+  return games.filter(game => game.categoryIds.includes(parseInt(selectedCategory)));
 }
 
 const filterBySearch = (games = [], searchQuery = '') => {
@@ -54,7 +53,7 @@ class GamesList extends React.Component {
         logout: false,
       },
       searchQuery: '',
-      selectedCategories: []
+      selectedCategory: null
     };
   }
   getGames = async () => {
@@ -107,8 +106,8 @@ class GamesList extends React.Component {
   }
   render() {
     const { player } = this.props;
-    const { games, categories, isLoading, searchQuery, selectedCategories } = this.state;
-    let filteredGames = filterByCategories(games, selectedCategories);
+    const { games, categories, isLoading, searchQuery, selectedCategory } = this.state;
+    let filteredGames = filterByCategories(games, selectedCategory);
     filteredGames = filterBySearch(filteredGames, searchQuery);
     return (
       <div className="page-container">
@@ -180,19 +179,13 @@ class GamesList extends React.Component {
                         {
                           categories.map(category =>
                             <li key={category.id}>
-                              <Checkbox
+                              <Radio
+                                checked={selectedCategory === category.id}
                                 value={category.id}
                                 label={category.name}
                                 onChange={(e, { checked }) => {
-                                  const newSelectedCategories = [...selectedCategories];
-                                  if(checked){
-                                    newSelectedCategories.push(category.id);
-                                  }else{
-                                    const idx = newSelectedCategories.indexOf(category.id);
-                                    newSelectedCategories.splice(idx,1);
-                                  }
                                   this.setState({
-                                    selectedCategories: newSelectedCategories
+                                    selectedCategory: category.id
                                   });
                                 }}
                               />
@@ -200,6 +193,16 @@ class GamesList extends React.Component {
                           )
                         }
                       </ul>
+                      <Button
+                        secondary
+                        onClick={(e) => {
+                          this.setState({
+                            selectedCategory: null
+                          })
+                        }}
+                      >
+                        Clear Filter
+                      </Button>
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
