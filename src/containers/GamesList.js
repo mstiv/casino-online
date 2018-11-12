@@ -33,7 +33,7 @@ const filterBySearch = (games = [], searchQuery = '') => {
   if(searchQuery.trim().length <=0){
     return games;
   }
-  return games.filter(game => game.name.indexOf(searchQuery) === 0);
+  return games.filter(game => game.name.toLowerCase().indexOf(searchQuery.toLowerCase()) === 0);
 }
 
 class GamesList extends React.Component {
@@ -189,16 +189,19 @@ class GamesList extends React.Component {
                           )
                         }
                       </ul>
-                      <Button
-                        secondary
-                        onClick={(e) => {
-                          this.setState({
-                            selectedCategory: null
-                          })
-                        }}
-                      >
-                        Clear Filter
-                      </Button>
+                      {
+                        selectedCategory !== null && 
+                          <Button
+                            secondary
+                            onClick={(e) => {
+                              this.setState({
+                                selectedCategory: null
+                              })
+                            }}
+                          >
+                            Clear Filter
+                          </Button>
+                      }
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
