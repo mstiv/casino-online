@@ -7,7 +7,8 @@ import {
   Icon,
   Loader,
   Input,
-  Checkbox
+  Checkbox,
+  Dimmer
 } from 'semantic-ui-react';
 import Logo from '../components/Logo';
 import PlayerInfo from '../components/PlayerInfo';
@@ -59,12 +60,6 @@ class GamesList extends React.Component {
   getGames = async () => {
     const { dispatch } = this.props;
     const { isLoading } = this.state;
-    this.setState({
-      isLoading: {
-        ...isLoading,
-        games: true
-      }
-    });
     const games = await dispatch(getAllGames());
     this.setState({
       games,
@@ -78,12 +73,6 @@ class GamesList extends React.Component {
   getCategories = async () => {
     const { dispatch } = this.props;
     const { isLoading } = this.state;
-    this.setState({
-      isLoading: {
-        ...isLoading,
-        categories: true
-      }
-    });
     const categories = await dispatch(getAllCategories());
     this.setState({
       categories,
@@ -100,12 +89,20 @@ class GamesList extends React.Component {
   }
 
   componentDidMount() {
-    const { games, categories } = this.state;
+    const { games, categories, isLoading } = this.state;
+    const newIsLoading = {...isLoading};
     if(!games.length) {
       this.getGames();
+      newIsLoading.games = true;
     }
     if(!categories.length) {
       this.getCategories();
+      newIsLoading.categories = true;
+    }
+    if((newIsLoading.games !== isLoading.games) || (newIsLoading.categories !== isLoading.categories)){
+      this.setState({
+        isLoading: newIsLoading
+      });
     }
   }
   render() {
@@ -160,8 +157,8 @@ class GamesList extends React.Component {
                 <Grid.Row>
                   <Grid.Column width={12}>
                       <h2 className="title">Games </h2>
+                      <Loader active={isLoading.games} inline/>
                       <ul className="games-list">
-                        <Loader active={isLoading.games} />
                         {
                           filteredGames.map(game => 
                             <Game 
@@ -172,14 +169,14 @@ class GamesList extends React.Component {
                         }
                       </ul>
                       {
-                        filteredGames.length === 0 &&
+                        !isLoading.games && filteredGames.length === 0 &&
                           <h5> Oops, No Games Found! </h5>
                       }
                   </Grid.Column>
                   <Grid.Column width={4}>
                       <h2 className="title">Categories </h2>
+                      <Loader active={isLoading.categories} inline/>
                       <ul className="categories">
-                        <Loader active={isLoading.categories} />
                         {
                           categories.map(category =>
                             <li key={category.id}>

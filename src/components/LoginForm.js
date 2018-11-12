@@ -73,7 +73,7 @@ class LoginForm extends React.Component {
 		            <Icon name="angle right" />
 		          </Button>
 		          <p className="error">{errorText}</p>
-		          <Loader active={isLoggingIn} />
+		          <Loader inline active={isLoggingIn} />
 		        </Form>
 		    </div>	
 		);	
