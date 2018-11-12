@@ -1,3 +1,4 @@
+@import '../styles/_variables.scss';
 .content{
 	.games-list{
 		.img-container{
@@ -14,13 +15,11 @@
 				margin-bottom: 10px;
 			}
 			button{
-				position: absolute;
-				bottom: 0;
-				right: 0;
+				float: right;
 			}
 		}
 		li{
-			margin-bottom: 20px;
+			margin-bottom: 30px;
 		}
 	}
 	.categories{
@@ -33,4 +32,52 @@
 			margin-top: 20px;
 		}
 	}
+}
+/* tablet css */
+@media only screen and (max-width: $tablet) {
+    .content{
+	    .ui.input.search {
+	    	position: absolute;
+	    	right: 0;
+	    }
+    }
+}
+/*mobile css */
+@media only screen and (max-width: $mobile) {
+    .ui.grid.content{
+	    .user{
+	    	.flex{
+	    		display: inline-flex;
+	    		& + .ui.button.logout {
+					float: right;
+				    vertical-align: top;
+				    margin-top: 10px;
+	    		}
+	    	}
+	    }
+	    .ui.input.search {
+	    	position: relative;
+	    	width: 100%;
+		    margin-top: 20px;
+	    }
+	    /* switch order using flex */
+		.row.switch-order-xs>div:nth-child(1) {
+		    order: 2;
+		}
+		.row.switch-order-xs>div:nth-child(1) h2{
+		    margin-top: 20px;
+		}
+		.categories{
+			display: flex;
+			justify-content: space-between;
+			li{
+				label{
+					padding-left: 20px;
+				}
+			}
+			& + button{
+				margin: 10px 0; 
+			}
+		}
+    }
 }

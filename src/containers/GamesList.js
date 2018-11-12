@@ -112,7 +112,7 @@ class GamesList extends React.Component {
             <Grid.Column width={12}>
               <Grid centered>
                 <Grid.Row>
-                  <Grid.Column width={8}>
+                  <Grid.Column computer={8} mobile={16}>
                     <Logo/>
                   </Grid.Column> 
                 </Grid.Row>
@@ -120,10 +120,10 @@ class GamesList extends React.Component {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column width={12}>
+            <Grid.Column largeScreen={12} widescreen={16}>
               <Grid className="content">
                 <Grid.Row>
-                  <Grid.Column className="user" width={12}>
+                  <Grid.Column className="user" computer={12} tablet={10} mobile={16}>
                     <PlayerInfo {...player} />
                     <Button
                       className="logout"
@@ -136,8 +136,9 @@ class GamesList extends React.Component {
                       Logout
                     </Button>
                   </Grid.Column>
-                  <Grid.Column width={4}>
+                  <Grid.Column computer={4} tablet={6} mobile={16}>
                     <Input
+                      className="search"
                       placeholder="Search Games"
                       loading={isLoading.search}
                       icon="search"
@@ -149,8 +150,8 @@ class GamesList extends React.Component {
                      />
                   </Grid.Column>
                 </Grid.Row>
-                <Grid.Row>
-                  <Grid.Column width={12}>
+                <Grid.Row className="switch-order-xs">
+                  <Grid.Column computer={12} mobile={16}>
                       <h2 className="title">Games </h2>
                       <Loader active={isLoading.games} inline/>
                       <ul className="games-list">
@@ -168,7 +169,7 @@ class GamesList extends React.Component {
                           <h5> Oops, No Games Found! </h5>
                       }
                   </Grid.Column>
-                  <Grid.Column width={4}>
+                  <Grid.Column computer={4} mobile={16}>
                       <h2 className="title">Categories </h2>
                       <Loader active={isLoading.categories} inline/>
                       <ul className="categories">
