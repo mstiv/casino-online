@@ -163,7 +163,7 @@ class GamesList extends React.Component {
                       <ul className="games-list">
                         <Loader active={isLoading.games} />
                         {
-                          filteredGames.map((game) => 
+                          filteredGames.map(game => 
                             <Game 
                               key={game.code} 
                               {...game} 
@@ -171,13 +171,17 @@ class GamesList extends React.Component {
                           )
                         }
                       </ul>
+                      {
+                        filteredGames.length === 0 &&
+                          <h5> Oops, No Games Found! </h5>
+                      }
                   </Grid.Column>
                   <Grid.Column width={4}>
                       <h2 className="title">Categories </h2>
                       <ul className="categories">
                         <Loader active={isLoading.categories} />
                         {
-                          categories.map((category) =>
+                          categories.map(category =>
                             <li key={category.id}>
                               <Checkbox
                                 value={category.id}
