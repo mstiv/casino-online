@@ -114,96 +114,98 @@ class GamesList extends React.Component {
     let filteredGames = filterByCategories(games, selectedCategories);
     filteredGames = filterBySearch(filteredGames, searchQuery);
     return (
-      <Grid className="page-container" centered>
-        <Grid.Row>
-          <Grid.Column width={12}>
-            <Grid centered>
-              <Grid.Row>
-                <Grid.Column width={8}>
-                  <Logo/>
-                </Grid.Column> 
-              </Grid.Row>
-            </Grid>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column width={12}>
-            <Grid className="content">
-              <Grid.Row>
-                <Grid.Column className="user" width={12}>
-                  <PlayerInfo {...player} />
-                  <Button
-                    className="logout"
-                    secondary
-                    onClick={(e) => {
-                      this.handleLogout();
-                    }}
-                  >
-                    <Icon name="angle left" />
-                    Logout
-                  </Button>
-                </Grid.Column>
-                <Grid.Column width={4}>
-                  <Input
-                    placeholder="Search Games"
-                    loading={isLoading.search}
-                    icon="search"
-                    onChange={(e, { value }) => {
-                      this.setState({
-                        searchQuery: value
-                      });
-                    }}
-                   />
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column width={12}>
-                    <h2 className="title">Games </h2>
-                    <ul className="games-list">
-                      <Loader active={isLoading.games} />
-                      {
-                        filteredGames.map((game) => 
-                          <Game 
-                            key={game.code} 
-                            {...game} 
-                          />
-                        )
-                      }
-                    </ul>
-                </Grid.Column>
-                <Grid.Column width={4}>
-                    <h2 className="title">Categories </h2>
-                    <ul className="categories">
-                      <Loader active={isLoading.categories} />
-                      {
-                        categories.map((category) =>
-                          <li key={category.id}>
-                            <Checkbox
-                              value={category.id}
-                              label={category.name}
-                              onChange={(e, { checked }) => {
-                                const newSelectedCategories = [...selectedCategories];
-                                if(checked){
-                                  newSelectedCategories.push(category.id);
-                                }else{
-                                  const idx = newSelectedCategories.indexOf(category.id);
-                                  newSelectedCategories.splice(idx,1);
-                                }
-                                this.setState({
-                                  selectedCategories: newSelectedCategories
-                                });
-                              }}
+      <div className="page-container">
+        <Grid centered>
+          <Grid.Row>
+            <Grid.Column width={12}>
+              <Grid centered>
+                <Grid.Row>
+                  <Grid.Column width={8}>
+                    <Logo/>
+                  </Grid.Column> 
+                </Grid.Row>
+              </Grid>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={12}>
+              <Grid className="content">
+                <Grid.Row>
+                  <Grid.Column className="user" width={12}>
+                    <PlayerInfo {...player} />
+                    <Button
+                      className="logout"
+                      secondary
+                      onClick={(e) => {
+                        this.handleLogout();
+                      }}
+                    >
+                      <Icon name="angle left" />
+                      Logout
+                    </Button>
+                  </Grid.Column>
+                  <Grid.Column width={4}>
+                    <Input
+                      placeholder="Search Games"
+                      loading={isLoading.search}
+                      icon="search"
+                      onChange={(e, { value }) => {
+                        this.setState({
+                          searchQuery: value
+                        });
+                      }}
+                     />
+                  </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                  <Grid.Column width={12}>
+                      <h2 className="title">Games </h2>
+                      <ul className="games-list">
+                        <Loader active={isLoading.games} />
+                        {
+                          filteredGames.map((game) => 
+                            <Game 
+                              key={game.code} 
+                              {...game} 
                             />
-                          </li>
-                        )
-                      }
-                    </ul>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+                          )
+                        }
+                      </ul>
+                  </Grid.Column>
+                  <Grid.Column width={4}>
+                      <h2 className="title">Categories </h2>
+                      <ul className="categories">
+                        <Loader active={isLoading.categories} />
+                        {
+                          categories.map((category) =>
+                            <li key={category.id}>
+                              <Checkbox
+                                value={category.id}
+                                label={category.name}
+                                onChange={(e, { checked }) => {
+                                  const newSelectedCategories = [...selectedCategories];
+                                  if(checked){
+                                    newSelectedCategories.push(category.id);
+                                  }else{
+                                    const idx = newSelectedCategories.indexOf(category.id);
+                                    newSelectedCategories.splice(idx,1);
+                                  }
+                                  this.setState({
+                                    selectedCategories: newSelectedCategories
+                                  });
+                                }}
+                              />
+                            </li>
+                          )
+                        }
+                      </ul>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </div>
     )
   }
 }

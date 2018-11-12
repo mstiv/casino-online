@@ -37,60 +37,62 @@ class GamesList extends React.Component {
     const { params } = match;
     const selectedGame = games.find(game => game.code === params.game);
     return (
-      <Grid className="page-container" centered>
-        <Grid.Row>
-          <Grid.Column width={12}>
-            <Grid centered>
-              <Grid.Row>
-                <Grid.Column width={8}>
-                  <Logo/>
-                </Grid.Column> 
-              </Grid.Row>
-            </Grid>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column width={12}>
-            <Grid className="content" centered>
-              <Grid.Row>
-                <Grid.Column className="user" width={16}>
-                  <PlayerInfo {...player} />
-                  <Button
-                    className="logout"
-                    secondary
-                    onClick={(e) => {
-                      this.handleLogout();
-                    }}
-                  >
-                    <Icon name="angle left" />
-                    Logout
-                  </Button>
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column width={16}>
-                  {selectedGame && <h2 className="title">{selectedGame.name}</h2> }
-                  <div className="flex"> 
-                    <div id="game-launch"></div>
-                    <div class="game-details">
-                      { selectedGame && <p>{selectedGame.description}</p>}
-                      <Link to={Urls.GAMES_PAGE}>
-                        <Button
-                          className="back-button"
-                          secondary
-                        >
-                          <Icon name="angle left" />
-                          Back to Games Page
-                        </Button>                        
-                      </Link>
+      <div className="page-container">
+        <Grid centered>
+          <Grid.Row>
+            <Grid.Column width={12}>
+              <Grid centered>
+                <Grid.Row>
+                  <Grid.Column width={8}>
+                    <Logo/>
+                  </Grid.Column> 
+                </Grid.Row>
+              </Grid>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={12}>
+              <Grid className="content" centered>
+                <Grid.Row>
+                  <Grid.Column className="user" width={16}>
+                    <PlayerInfo {...player} />
+                    <Button
+                      className="logout"
+                      secondary
+                      onClick={(e) => {
+                        this.handleLogout();
+                      }}
+                    >
+                      <Icon name="angle left" />
+                      Logout
+                    </Button>
+                  </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                  <Grid.Column width={16}>
+                    {selectedGame && <h2 className="title">{selectedGame.name}</h2> }
+                    <div className="flex"> 
+                      <div id="game-launch"></div>
+                      <div class="game-details">
+                        { selectedGame && <p>{selectedGame.description}</p>}
+                        <Link to={Urls.GAMES_PAGE}>
+                          <Button
+                            className="back-button"
+                            secondary
+                          >
+                            <Icon name="angle left" />
+                            Back to Games Page
+                          </Button>                        
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </div>
     )
   }
 }
