@@ -26,7 +26,7 @@ const comeon = (() => {
         game: {
             launch:function(game) {
             	if(!games[game]){
-            		return "No Game Found!";
+            		return;
             	}
             	const $gameLauncher = document.getElementById('game-launch');
                 const $gameIframe = `<iframe 
@@ -38,6 +38,7 @@ const comeon = (() => {
                 						height="480"
                 					></iframe>`;
                 $gameLauncher.innerHTML = $gameIframe;
+                return true;
             }
         }
     }

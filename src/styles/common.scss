@@ -88,6 +88,12 @@ li{
       margin-bottom: 20px;
   }
 }
+@media only screen and (max-width: $tablet) {
+    .ui.grid.content{
+      margin: calc(-1rem + 20px);
+      padding: 20px;
+    }
+}
 @media only screen and (max-width: $mobile) {
     .ui.grid.content{
       margin: calc(-1rem + 10px);

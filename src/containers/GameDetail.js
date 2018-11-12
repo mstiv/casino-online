@@ -28,17 +28,17 @@ class GamesList extends React.Component {
   }
 
   componentDidMount() {
-    const { match } = this.props;
+    const { match, history } = this.props;
     const { params } = match;
-    comeon.game.launch(params.game);
-  }
-  render() {
-    const { player, games, match, history } = this.props;
-    const { params } = match;
-    const selectedGame = games.find(game => game.code === params.game);
-    if(!selectedGame){
+    const didLaunch = comeon.game.launch(params.game);
+    if(!didLaunch){
       history.push(Urls.NOT_FOUND);
     }
+  }
+  render() {
+    const { player, games, match } = this.props;
+    const { params } = match;
+    const selectedGame = games.find(game => game.code === params.game);
     return (
       <div className="page-container">
         <Grid centered>
@@ -46,7 +46,7 @@ class GamesList extends React.Component {
             <Grid.Column width={12}>
               <Grid centered>
                 <Grid.Row>
-                  <Grid.Column width={8}>
+                  <Grid.Column computer={8} mobile={16}>
                     <Logo/>
                   </Grid.Column> 
                 </Grid.Row>
@@ -54,7 +54,7 @@ class GamesList extends React.Component {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column width={12}>
+            <Grid.Column largeScreen={12} widescreen={16}>
               <Grid className="content" centered>
                 <Grid.Row>
                   <Grid.Column className="user" width={16}>
@@ -71,7 +71,7 @@ class GamesList extends React.Component {
                     </Button>
                   </Grid.Column>
                 </Grid.Row>
-                <Grid.Row>
+                <Grid.Row className="game-container">
                   <Grid.Column width={16}>
                     {selectedGame && <h2 className="title">{selectedGame.name}</h2> }
                     <div className="flex"> 
