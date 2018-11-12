@@ -73,7 +73,7 @@ class GamesList extends React.Component {
                     {selectedGame && <h2 className="title">{selectedGame.name}</h2> }
                     <div className="flex"> 
                       <div id="game-launch"></div>
-                      <div class="game-details">
+                      <div className="game-details">
                         { selectedGame && <p>{selectedGame.description}</p>}
                         <Link to={Urls.GAMES_PAGE}>
                           <Button
