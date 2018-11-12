@@ -22,10 +22,6 @@ import {
 } from './utils';
 
 /*Filter Util functions*/
-const hasCommonElements = (arr1 = [], arr2 = []) => {
-    return arr2.filter(item => arr1.includes(item)).length > 0
-}
-
 const filterByCategories = (games = [], selectedCategory= null) => {
   if(!selectedCategory){
     return games;
