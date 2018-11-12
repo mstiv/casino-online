@@ -21,6 +21,12 @@ This command runs both the server and app
 npm start
 ```
 
+### Testing
+To run unit tests
+```javascript
+yarn test
+```
+
 ### For production build
 ```javascript
 npm run build
