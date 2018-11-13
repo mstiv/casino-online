@@ -7,6 +7,7 @@ import LoginForm from '../components/LoginForm';
 import Logo from '../components/Logo';
 import './Login.scss'
 
+/* import the utils that the login form needs */
 import {
 	loginInWithCreds
 } from './utils';

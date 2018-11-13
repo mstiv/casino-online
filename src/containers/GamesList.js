@@ -21,7 +21,7 @@ import {
   logoutUser
 } from './utils';
 
-/*Filter Util functions*/
+/*UI Filter  functions*/
 const filterByCategories = (games = [], selectedCategory= null) => {
   if(!selectedCategory){
     return games;
@@ -94,6 +94,7 @@ class GamesList extends React.Component {
       this.getCategories();
       newIsLoading.categories = true;
     }
+    /* check both loader states and set once, instead setting it two times */
     if((newIsLoading.games !== isLoading.games) || (newIsLoading.categories !== isLoading.categories)){
       this.setState({
         isLoading: newIsLoading
@@ -103,8 +104,8 @@ class GamesList extends React.Component {
   render() {
     const { player } = this.props;
     const { games, categories, isLoading, searchQuery, selectedCategory } = this.state;
-    let filteredGames = filterByCategories(games, selectedCategory);
-    filteredGames = filterBySearch(filteredGames, searchQuery);
+    let filteredGames = filterByCategories(games, selectedCategory); // apply category filter if any
+    filteredGames = filterBySearch(filteredGames, searchQuery); // apply search filter if any
     return (
       <div className="page-container">
         <Grid centered>

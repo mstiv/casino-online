@@ -11,7 +11,7 @@ import {
 } from '../actions'
 import ApiUrls from '../constants/ApiUrls';
 
-
+/* contains all the utils that fetch/post data */
 export const loginInWithCreds = ( username, password) => async (dispatch) => {
 	const res = await post(ApiUrls.LOGIN, {username, password});
 	if(res.status === 200 && res.data && res.data.status === "success"){

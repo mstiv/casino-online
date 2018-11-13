@@ -37,7 +37,6 @@ li{
   min-height: 100vh;
 }
 /* better performance by preventing reflows when image loads - allocate a specified space based on aspect ratio for the image before it loads */
-
 .img-container{
   position: relative;
   img{
@@ -61,6 +60,7 @@ li{
   padding: 40px;
   background: $dashboardBackgroundWhite;
 }
+/* common component css, like player info */
 .content{
   .user{
     .img-container{

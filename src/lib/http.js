@@ -3,7 +3,7 @@ const isHeaderSaysJson = (value) => (value.includes('application/json'));
 function isJsonResponse(response) {
   return response.headers.get('Content-Type') && isHeaderSaysJson(response.headers.get('Content-Type'));
 }
-
+/* a http util function, that makes the fetch call with config and resolves the promise */
 const makeRequest = async (url = '', config = {}) => {
 	const response = await fetch(url, config);
 	if (response.status === 500) {

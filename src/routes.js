@@ -12,6 +12,7 @@ import GamesList from './containers/GamesList';
 import GameDetail from './containers/GameDetail';
 import RouteNotFound from './containers/RouteNotFound';
 
+/* hocs to check login state and redirect appropriately*/
 import {
 	userIsAuthenticated,
 	userIsNotAuthenticated,

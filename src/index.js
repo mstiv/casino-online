@@ -13,6 +13,7 @@ import {
 	getPlayerFromLocalStorage
 } from './lib/authHelpers';
 
+/*if player logged in previously, load initial state from local storage*/
 const initializeReduxStore = () => {
 	const initialState = {
 		player: getPlayerFromLocalStorage() || {}

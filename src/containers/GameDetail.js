@@ -30,7 +30,7 @@ class GamesList extends React.Component {
   componentDidMount() {
     const { match, history } = this.props;
     const { params } = match;
-    const didLaunch = comeon.game.launch(params.game);
+    const didLaunch = comeon.game.launch(params.game); //check if it was a valid game
     if(!didLaunch){
       history.push(Urls.NOT_FOUND);
     }
